@@ -16,8 +16,8 @@ export default class App extends Component {
 
   addContact = (human) => {
     const searchSameName = this.state.contacts
-      .map((contact) => contact.name)
-      .includes(human.name);
+      .map((contact) => contact.name.toLowerCase())
+      .includes(human.name.toLowerCase());
 
     if (searchSameName) {
       alert(`${human.name} is already in contacts`);
@@ -40,10 +40,13 @@ export default class App extends Component {
 
   getVisibleContacts = () => {
     const { contacts, filter } = this.state;
-
-    return contacts.filter((contacts) =>
-      contacts.name.toLowerCase().includes(filter.toLowerCase())
-    );
+    if (this.filter === "") {
+      return;
+    } else {
+      return contacts.filter((contacts) =>
+        contacts.name.toLowerCase().includes(filter.toLowerCase())
+      );
+    }
   };
 
   removeContact = (contactId) => {
