@@ -28,6 +28,8 @@
 .addBtn:hover {
   background-color: rgb(43, 247, 16);
   color: white;
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 .name {
